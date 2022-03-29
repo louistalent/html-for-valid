@@ -7,7 +7,7 @@ $valid_url_regex = '/.*/';
 
 // ############################################################################
 
-$url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
+$url = "https://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
 
 if ( !$url ) {
   
