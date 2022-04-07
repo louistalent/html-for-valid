@@ -25,12 +25,16 @@ if ( !$url ) {
   $status = array( 'http_code' => 'ERROR' );
   
 } else {
-  echo $_POST;
   $ch = curl_init( $url );
   
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
     curl_setopt( $ch, CURLOPT_POST, true );
     curl_setopt( $ch, CURLOPT_POSTFIELDS, $_POST );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+        'Content-Type: application/json',                                                                                
+        'Content-Length: ' . strlen($data_string))                                                                 
+    );
 
     // curl_setopt($ch,CURLOPT_URL,$url);
     // curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
