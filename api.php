@@ -9,7 +9,7 @@ $valid_url_regex = '/.*/';
 
 // $url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
 
-$url = "http://localhost:3000".$_POST['url'];
+$url = "http://localhost:3000".$_REQUEST['url'];
 //     /api.php
 
 if ( !$url ) {
