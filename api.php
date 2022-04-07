@@ -25,7 +25,7 @@ if ( !$url ) {
   $status = array( 'http_code' => 'ERROR' );
   
 } else {
-  echo $_SERVER['REQUEST_URI'];
+  echo $url;
   $ch = curl_init( $url );
   
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
