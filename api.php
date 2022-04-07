@@ -27,6 +27,7 @@ if ( !$url ) {
 } else {
   $ch = curl_init( $url );
   $data = array('data'=>$_POST)
+  echo $data;
   $data_string = json_encode($data); 
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
     curl_setopt( $ch, CURLOPT_POST, true );
