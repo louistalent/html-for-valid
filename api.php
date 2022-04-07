@@ -26,16 +26,20 @@ if ( !$url ) {
   
 } else {
   $ch = curl_init( $url );
-  $data = array('data'=>$_POST)
+  // $data = array('data'=>$_POST)
   echo $data;
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
-    curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
+    $data = array("name" => "Lorerm", "age" => "18");                                                                    
+    $data_string = json_encode($data);                                                                                   
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
         'Content-Type: application/json',                                                                                
-        'Content-Length: ' . strlen($data))                                                                 
+        'Content-Length: ' . strlen($data_string))                                                                 
     );
+
+
 
     // curl_setopt($ch,CURLOPT_URL,$url);
     // curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
