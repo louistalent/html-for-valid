@@ -26,10 +26,11 @@ if ( !$url ) {
   
 } else {
   $ch = curl_init( $url );
-  
+  $data = array('data'=>$_POST)
+  $data_string = json_encode($data); 
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
     curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $_POST );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $data_string );
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
         'Content-Type: application/json',                                                                                
