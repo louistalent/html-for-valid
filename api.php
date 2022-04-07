@@ -7,7 +7,9 @@ $valid_url_regex = '/.*/';
 
 // ############################################################################
 
-$url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
+// $url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
+
+$url = "http://localhost:3000".$_POST['url'];
 //     /api.php
 
 if ( !$url ) {
@@ -27,13 +29,13 @@ if ( !$url ) {
   $ch = curl_init( $url );
   
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
-    // curl_setopt( $ch, CURLOPT_POST, true );
-    // curl_setopt( $ch, CURLOPT_POSTFIELDS, $_POST );
+    curl_setopt( $ch, CURLOPT_POST, true );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $_POST );
 
-    curl_setopt($ch,CURLOPT_URL,$url);
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-    curl_setopt($ch,CURLOPT_HEADER, false); 
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST);
+    // curl_setopt($ch,CURLOPT_URL,$url);
+    // curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    // curl_setopt($ch,CURLOPT_HEADER, false); 
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST);
   }
   
   if ( $_GET['send_cookies'] ) {
