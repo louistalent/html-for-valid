@@ -8,6 +8,7 @@ $valid_url_regex = '/.*/';
 // ############################################################################
 
 $url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
+//     /api.php
 
 if ( !$url ) {
   
@@ -22,7 +23,7 @@ if ( !$url ) {
   $status = array( 'http_code' => 'ERROR' );
   
 } else {
-  echo $url;
+  echo $_SERVER['REQUEST_URI'];
   $ch = curl_init( $url );
   
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
