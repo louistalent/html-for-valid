@@ -8,9 +8,8 @@ $valid_url_regex = '/.*/';
 // ############################################################################
 
 // $url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
-$_POST = json_decode(file_get_contents("php://input"),true);
-$url = "http://localhost:3000".$_POST['url'];
-echo $_POST['url'];
+$obj = json_decode(file_get_contents("php://input"));
+$url = "http://localhost:3000".$obj->url;
 //     /api.php
 
 if ( !$url ) {
@@ -27,6 +26,7 @@ if ( !$url ) {
   
 } else {
   $ch = curl_init( $url );
+  echo $url;
 
   // $data = array('data'=>$_POST)
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
