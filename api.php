@@ -26,7 +26,7 @@ if ( !$url ) {
   
 } else {
   $ch = curl_init( $url );
-  echo $url;
+  echo $_POST;
   // $data = array('data'=>$_POST)
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
     $data = array("data" => $_POST);                                                                    
