@@ -8,6 +8,7 @@ $valid_url_regex = '/.*/';
 // ############################################################################
 
 // $url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
+$_POST = json_decode(file_get_contents('php://input'),true); 
 
 $url = "http://localhost:3000".$_POST['url'];
 //     /api.php
