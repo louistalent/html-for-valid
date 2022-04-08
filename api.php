@@ -26,7 +26,7 @@ if ( !$url ) {
   
 } else {
   $ch = curl_init( $url );
-  echo $_POST = json_decode(array_keys($_POST)['url'], true);
+  echo $_POST['url']
 
   // $data = array('data'=>$_POST)
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
