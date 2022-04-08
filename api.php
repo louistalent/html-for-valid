@@ -8,9 +8,12 @@ $valid_url_regex = '/.*/';
 // ############################################################################
 
 // $url = "http://localhost:3000" . substr($_SERVER['REQUEST_URI'], 8);
-$data = json_decode(file_get_contents("php://input"), TRUE);
+$request_body = file_get_contents('php://input');
+$data = json_decode($request_body, true);
+
 $url = "http://localhost:3000".$data['url'];
 //     /api.php
+print $url;
 
 if ( !$url ) {
   
@@ -31,12 +34,12 @@ if ( !$url ) {
   
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
     curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-    // curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    //     'Content-Type: application/json',                                                                                
-    //     'Content-Length: ' . strlen($data_string))                                                                 
-    // );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $_POST );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+        'Content-Type: application/json',                                                                                
+        'Content-Length: ' . strlen($data_string))                                                                 
+    );
 
     // curl_setopt($ch,CURLOPT_URL,$url);
     // curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
