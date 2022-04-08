@@ -13,7 +13,6 @@ $data = json_decode($request_body, true);
 
 $url = "http://localhost:3000".$data['url'];
 //     /api.php
-print $url;
 
 if ( !$url ) {
   
@@ -33,14 +32,17 @@ if ( !$url ) {
   $ch = curl_init( $url );
   
   if ( strtolower($_SERVER['REQUEST_METHOD']) == 'post' ) {
-    curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $_POST );
+    
+    // $data = array("name" => "Lorerm", "age" => "18");                                                                    
+    $data_string = json_encode($data);
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
         'Content-Type: application/json',                                                                                
         'Content-Length: ' . strlen($data_string))                                                                 
     );
-
     // curl_setopt($ch,CURLOPT_URL,$url);
     // curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     // curl_setopt($ch,CURLOPT_HEADER, false); 
