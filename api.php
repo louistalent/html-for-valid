@@ -27,7 +27,6 @@ if ( !$url ) {
   $status = array( 'http_code' => 'ERROR' );
   
 } else {
-  echo $url;
   
   $ch = curl_init( $url );
   
